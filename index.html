@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eimy Curls ♡</title>
+<style>
+:root{--rosa:#f7dce8;--rosa2:#e9a9c4;--vino:#6f304b;--crema:#fffaf7;--texto:#382a30}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--texto);background:var(--crema);line-height:1.6}
+header{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px 7%;background:#fff;box-shadow:0 2px 14px #6f304b12;position:sticky;top:0;z-index:5}
+.logo{margin:0;color:var(--vino);font-family:Georgia,serif;font-size:1.7rem}
+nav{display:flex;gap:24px;flex-wrap:wrap}
+nav a{color:var(--texto);text-decoration:none;font-weight:600}
+nav a:hover{color:#b44c7b}
+button,.boton{border:0;border-radius:999px;padding:12px 18px;background:var(--vino);color:#fff;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block}
+button:hover,.boton:hover{background:#914766}
+#verCarrito{white-space:nowrap}
+.inicio{padding:70px 8%;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;background:linear-gradient(120deg,#fff5f8,#f7dce8)}
+.inicio h1{font: bold clamp(2.5rem,5vw,4.5rem)/1.05 Georgia,serif;margin:12px 0;color:var(--vino)}
+.inicio h1 span{color:#c15e8b}
+.inicio p{max-width:550px}
+.subtitulo{font-size:.8rem;letter-spacing:.18em;font-weight:bold;color:#9b496e}
+.hero-foto{min-height:300px;border-radius:45% 45% 18px 18px;background:radial-gradient(circle at 50% 35%,#fff 0 12%,#f1bfd3 13% 32%,#d985ad 33% 55%,#9d5277 56%);display:flex;align-items:end;justify-content:center;padding:20px;color:white;font:italic 1.1rem Georgia,serif;text-align:center;box-shadow:0 20px 50px #6f304b20}
+section#productos{padding:64px 7%}
+h2{text-align:center;color:var(--vino);font: bold 2rem Georgia,serif}
+.descripcion{text-align:center;margin-top:-8px;margin-bottom:32px;color:#7c6871}
+.productos{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;max-width:1200px;margin:auto}
+.producto{background:white;border-radius:18px;overflow:hidden;box-shadow:0 8px 26px #6f304b12;border:1px solid #f1e3e9;display:flex;flex-direction:column}
+.foto{height:220px;background:#f8e8ef;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.foto img{width:100%;height:100%;object-fit:contain;padding:14px;position:relative;z-index:1}
+.fallback{display:none;position:absolute;inset:0;align-items:center;justify-content:center;flex-direction:column;color:#a74c77;font-size:4rem;background:radial-gradient(circle,#fff 0,#f8e8ef 70%)}
+.fallback small{font:12px Arial,sans-serif;color:#805b6b;margin-top:8px}
+.foto.sin-foto .fallback{display:flex}
+.contenido{padding:18px;display:flex;flex-direction:column;align-items:flex-start;flex:1}
+.producto h3{margin:0 0 8px;color:var(--vino);font-size:1.1rem}
+.producto p{margin:0 0 14px;color:#725e67;flex:1}
+.producto strong{margin-bottom:14px}
+.producto button{width:100%;font-size:.9rem}
+.nosotros{padding:55px 8%;background:#f8e8ef;text-align:center}
+.nosotros p{max-width:700px;margin:0 auto}
+footer{text-align:center;padding:28px;background:#4b2939;color:white}
+footer h2{color:white;margin:0}
+footer p{margin:4px}
+.carrito{display:none;position:fixed;right:18px;top:85px;width:min(360px,calc(100vw - 36px));max-height:75vh;overflow:auto;background:white;padding:22px;border-radius:18px;box-shadow:0 10px 40px #0003;z-index:10;border:1px solid #ead4df}
+.carrito.abierto{display:block}
+#cerrar{float:right;padding:6px 12px}
+#lista{padding-left:20px}
+#lista li{margin:10px 0}
+#vaciar{background:#8b6a79}
+@media(max-width:700px){header{padding:14px 5%;flex-wrap:wrap}nav{gap:12px}.inicio{grid-template-columns:1fr;padding:45px 7%}.hero-foto{min-height:220px}section#productos{padding:45px 5%}}
+</style>
+</head>
+<body>
+<header>
+  <h2 class="logo">Eimy Curls ♡</h2>
+  <nav><a href="#inicio">Inicio</a><a href="#productos">Productos</a><a href="#nosotros">Quién soy</a></nav>
+  <button id="verCarrito">🛍️ <span id="contador">0</span></button>
+</header>
+<section class="inicio" id="inicio">
+  <div>
+    <p class="subtitulo">CUIDA Y AMA TUS RIZOS</p>
+    <h1>Tus rizos,<br><span>tu esencia.</span></h1>
+    <p>Encuentra los productos ideales para tener rizos hermosos, hidratados y definidos.</p>
+    <a href="#productos" class="boton">Ver productos ♡</a>
+  </div>
+  <div class="hero-foto">Tu rutina de rizos comienza aquí ♡</div>
+</section>
+<section id="productos">
+  <h2>Favoritos para tus rizos ♡</h2>
+  <p class="descripcion">Todo lo que tu cabello necesita.</p>
+  <div class="productos">
+      <article class="producto">
+        <div class="foto">
+          <img src="./imagenes/skalacauchos.jpg.jpeg" alt="Mascarilla Skala Mais Cachos" onerror="this.style.display='none'; this.parentElement.classList.add('sin-foto');">
+          <span class="fallback">♡<small>Agrega tu foto en la carpeta img</small></span>
+        </div>
+        <div class="contenido">
+          <h3>Mascarilla Skala Mais Cachos</h3>
+          <p>Hidratación para rizos suaves y definidos.</p>
+          <strong>$28,000 COP</strong>
+          <button class="agregar" data-nombre="Mascarilla Skala Mais Cachos" data-precio="28000">Agregar al carrito</button>
+        </div>
+      </article>
+      <article class="producto">
+        <div class="foto">
+          <img src="./imagenes/cremaparapeinar.jpeg" alt="Crema para peinar" onerror="this.style.display='none'; this.parentElement.classList.add('sin-foto');">
+          <span class="fallback">♡<small>Agrega tu foto en la carpeta img</small></span>
+        </div>
+        <div class="contenido">
+          <h3>Crema para peinar</h3>
+          <p>Define tus rizos y ayuda a controlar el frizz.</p>
+          <strong>$22,000 COP</strong>
+          <button class="agregar" data-nombre="Crema para peinar" data-precio="22000">Agregar al carrito</button>
+        </div>
+      </article>
+      <article class="producto">
+        <div class="foto">
+          <img src="./imagenes/peinepararizos.jpeg" alt="Peine para rizos" onerror="this.style.display='none'; this.parentElement.classList.add('sin-foto');">
+          <span class="fallback">♡<small>Agrega tu foto en la carpeta img</small></span>
+        </div>
+        <div class="contenido">
+          <h3>Peine para rizos</h3>
+          <p>Desenreda tu cabello con delicadeza.</p>
+          <strong>$12,000 COP</strong>
+          <button class="agregar" data-nombre="Peine para rizos" data-precio="12000">Agregar al carrito</button>
+        </div>
+      </article>
+      <article class="producto">
+        <div class="foto">
+          <img src="./imagenes/Difusor secador Philco.jpeg" alt="Difusor secador Philco" onerror="this.style.display='none'; this.parentElement.classList.add('sin-foto');">
+          <span class="fallback">♡<small>Agrega tu foto en la carpeta img</small></span>
+        </div>
+        <div class="contenido">
+          <h3>Difusor secador Philco</h3>
+          <p>Ideal para secar tus rizos y ayudar a conservar su forma.</p>
+          <strong>$150,000 COP</strong>
+          <button class="agregar" data-nombre="Difusor secador Philco" data-precio="150000">Agregar al carrito</button>
+        </div>
+      </article>
+      <article class="producto">
+        <div class="foto">
+          <img src="./imagenes/Gorro de satén.jpeg" alt="Gorro de satén" onerror="this.style.display='none'; this.parentElement.classList.add('sin-foto');">
+          <span class="fallback">♡<small>Agrega tu foto en la carpeta img</small></span>
+        </div>
+        <div class="contenido">
+          <h3>Gorro de satén</h3>
+          <p>Ayuda a proteger tus rizos mientras duermes.</p>
+          <strong>$20,000 COP</strong>
+          <button class="agregar" data-nombre="Gorro de satén" data-precio="20000">Agregar al carrito</button>
+        </div>
+      </article>
+      <article class="producto">
+        <div class="foto">
+          <img src="./imagenes/skala.jfif" alt="Gel definidor Etniker" onerror="this.style.display='none'; this.parentElement.classList.add('sin-foto');">
+          <span class="fallback">♡<small>Agrega tu foto en la carpeta img</small></span>
+        </div>
+        <div class="contenido">
+          <h3>Gel definidor Etniker</h3>
+          <p>Ayuda a moldear y definir tus rizos.</p>
+          <strong>$16,000 COP</strong>
+          <button class="agregar" data-nombre="Gel definidor Etniker" data-precio="16000">Agregar al carrito</button>
+        </div>
+      </article>
+      <article class="producto">
+        <div class="foto">
+          <img src="./imagenes/peinarcrema.jfif" alt="Mousse Rolda para rizos" onerror="this.style.display='none'; this.parentElement.classList.add('sin-foto');">
+          <span class="fallback">♡<small>Agrega tu foto en la carpeta img</small></span>
+        </div>
+        <div class="contenido">
+          <h3>Mousse Rolda para rizos</h3>
+          <p>Aporta volumen y brillo y ayuda a controlar el frizz.</p>
+          <strong>$25,000 COP</strong>
+          <button class="agregar" data-nombre="Mousse Rolda para rizos" data-precio="25000">Agregar al carrito</button>
+        </div>
+      </article>
+  </div>
+</section>
+<section id="nosotros" class="nosotros">
+  <h2>Amamos tus rizos ♡</h2>
+  <p>Eimy Curls es un espacio creado para quienes quieren cuidar, hidratar y lucir sus rizos con confianza. ¡Tu cabello, tu esencia!</p>
+</section>
+<footer><h2>Eimy Curls ♡</h2><p>Rizos felices, belleza real.</p><p>© 2026 Eimy Curls</p></footer>
+<div id="carrito" class="carrito">
+  <button id="cerrar">✕</button>
+  <h2>Mi carrito 🛍️</h2>
+  <ul id="lista"></ul>
+  <h3>Total: $<span id="total">0</span> COP</h3>
+  <button id="vaciar">Vaciar carrito</button>
+</div>
+<script>
+const carrito=document.getElementById('carrito');
+const lista=document.getElementById('lista');
+const contador=document.getElementById('contador');
+const total=document.getElementById('total');
+let compra=[];
+function dibujar(){
+  lista.innerHTML='';let suma=0;
+  compra.forEach((p,i)=>{suma+=p.precio;const li=document.createElement('li');li.textContent=p.nombre+' — $'+p.precio.toLocaleString('es-CO')+' ';const b=document.createElement('button');b.textContent='Quitar';b.style.padding='5px 9px';b.onclick=()=>{compra.splice(i,1);dibujar()};li.appendChild(b);lista.appendChild(li)});
+  contador.textContent=compra.length;total.textContent=suma.toLocaleString('es-CO');
+}
+document.querySelectorAll('.agregar').forEach(b=>b.addEventListener('click',()=>{compra.push({nombre:b.dataset.nombre,precio:Number(b.dataset.precio)});dibujar()}));
+document.getElementById('verCarrito').onclick=()=>carrito.classList.toggle('abierto');
+document.getElementById('cerrar').onclick=()=>carrito.classList.remove('abierto');
+document.getElementById('vaciar').onclick=()=>{compra=[];dibujar()};
+</script>
+</body>
+</html>
